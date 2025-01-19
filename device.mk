@@ -93,6 +93,12 @@ PRODUCT_PACKAGES += \
     hardware.sku.XT2363-8.prop \
     hardware.sku.XT2363-9.prop
 
+# Blur
+TARGET_ENABLE_BLUR := true
+
+# BCR
+$(call inherit-product-if-exists, vendor/bcr/bcr.mk)
+
 # Sensors
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/sensors/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf
