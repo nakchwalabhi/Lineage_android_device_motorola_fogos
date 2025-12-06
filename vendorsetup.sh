@@ -22,7 +22,7 @@ clone_if_missing "https://github.com/JNWSG/Lineage_android_kernel_motorola_sm637
 # Additional repos
 clone_if_missing "https://github.com/JNWSG/Lineage_hardware_motorola.git" "16.2" "hardware/motorola"
 clone_if_missing "https://github.com/JNWSG/hardware_dolby.git" "16.0" "hardware/dolby"
-# VIPER4AndroidFX
+clone_if_missing "https://github.com/LineageOS/android_hardware_samsung_slsi_nfc.git" "" "hardware/samsung_slsi/nfc"
 clone_if_missing "https://github.com/JNWSG/packages_apps_ViPER4AndroidFX.git" "v4a" "packages/apps/ViPER4AndroidFX"
 # ---------------------------------------------------------
 # MotCamera4 APK download
