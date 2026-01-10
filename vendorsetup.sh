@@ -24,16 +24,13 @@ clone_if_missing "https://github.com/JNWSG/Lineage_hardware_motorola.git" "16.2"
 clone_if_missing "https://github.com/JNWSG/hardware_dolby.git" "16.0" "hardware/dolby"
 clone_if_missing "https://github.com/LineageOS/android_hardware_samsung_slsi_nfc.git" "" "hardware/samsung_slsi/nfc"
 clone_if_missing "https://github.com/JNWSG/packages_apps_ViPER4AndroidFX.git" "v4a" "packages/apps/ViPER4AndroidFX"
+clone_if_missing "https://gitea.com/JNWSG/vendor_motorola_MotCamera4.git" "16.0" "vendor/motorola/MotCamera4"
 # ---------------------------------------------------------
-# MotCamera4 APK download
-APK_DIR="vendor/motorola/fogos/proprietary/product/priv-app/MotCamera4"
-APK_NAME="MotCamera4.apk"
-APK_URL="https://sourceforge.net/projects/fogos-rom/files/MotCamera4.apk/download"
-mkdir -p "$APK_DIR"
-if [ ! -f "$APK_DIR/$APK_NAME" ]; then
-    echo "Downloading $APK_NAME..."
-    wget -O "$APK_DIR/$APK_NAME" "$APK_URL"
-    echo "Downloaded $APK_NAME to $APK_DIR"
-else
-    echo "$APK_NAME already exists, skipping download."
+MOTCAMERA_BLOCK="# Inherit MotCamera config
+PRODUCT_PACKAGES += \\
+    MotCamera4
+\$(call inherit-product, vendor/motorola/MotCamera4/motcamera4.mk)"
+if ! grep -q "MotCamera4/motcamera4.mk" device/motorola/fogos/device.mk 2>/dev/null; then
+    echo "" >> device/motorola/fogos/device.mk
+    echo "$MOTCAMERA_BLOCK" >> device/motorola/fogos/device.mk
 fi
